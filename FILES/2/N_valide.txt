@@ -1,0 +1,4 @@
+ 3 	 wwww 	 2.00
+ 5 	 ffff 	 3.00
+ 6 	 rrrr 	 9.50
+ 7 	 xxxx 	 8.50

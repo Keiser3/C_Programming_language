@@ -1,0 +1,7 @@
+livre:
+ numero:1
+ auteur: ccccc
+ editeur:sdcwrcf
+ titre:SXASDCASCCASFD
+ stock: 13
+ prix:22.00
