@@ -8,10 +8,10 @@ typedef struct entier {
 
 
 entier *ajoutdebut(entier *liste){
-    entier *e= (entier*) malloc(sizeof(entier));
-    scanf("%d",&e->x);
-    e->next = liste->next;
-    liste->next = e;
+     entier *e= (entier*) malloc(sizeof(entier));
+     scanf("%d",&e->x);
+     e->next = liste->next;
+     liste->next = e;
      return liste;
 }
 entier *suppdebut(entier *liste){
@@ -66,7 +66,7 @@ entier *suppFin(entier *liste){
 
     
 }
-entier suppPosition
+
 
 void main(){
     entier *liste= (entier*) malloc(sizeof(entier));
