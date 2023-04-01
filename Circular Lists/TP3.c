@@ -6,7 +6,6 @@ typedef struct polynome{
     int exp;
     struct polynome* next;
 } polynome;
-
 polynome* saisie(){
    polynome* temp = (polynome*) malloc(sizeof(polynome));
    printf("sasir le coeffecient et l'exposant: \n");
@@ -108,7 +107,9 @@ void main(){
     printf("saisir le nombre des Monomes du polynomes 1\n");
     scanf("%d",&n);
     for(int i = 0;i<n;i++)
-    {one = ajout(one);}
+    {
+        one = ajout(one);
+     }
      
      printf("saisir le nombre des Monomes du polynomes 2\n");
      scanf("%d",&n);
