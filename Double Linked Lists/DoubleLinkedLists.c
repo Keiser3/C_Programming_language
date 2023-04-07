@@ -57,6 +57,14 @@ entier *ajoutFin(entier *liste){
       e-> precedant = p;
       return liste; 
 }
+entier *suppfin(entier *liste){
+    entier *p = liste->suivant;
+     while(p->suivant!=NULL){
+        p = p->suivant;
+      }
+      p->precedant->suivant = NULL;
+      free(p);
+}
 void main(){
     entier *liste = (entier*) malloc(sizeof(entier));
     liste->suivant = NULL;
@@ -72,5 +80,6 @@ void main(){
     Afficher(liste);
     ajoutFin(liste);
     Afficher(liste);
-    
+    suppfin(liste);
+    Afficher(liste);
 }
