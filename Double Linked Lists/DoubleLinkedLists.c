@@ -46,6 +46,10 @@ void main(){
     liste->precedant = NULL;
     Ajoutdebut(liste);
     Ajoutdebut(liste);
+    Ajoutdebut(liste);
+    Ajoutdebut(liste);
+    Afficher(liste);
+    suppdebut(liste);
     Afficher(liste);
     suppdebut(liste);
     Afficher(liste);
