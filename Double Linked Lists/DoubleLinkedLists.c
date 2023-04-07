@@ -39,7 +39,24 @@ entier *suppdebut(entier *liste){
      free(e);
     return liste;
 }
+entier *ajoutFin(entier *liste){
+     entier *e , *p;
+     if(liste->suivant == NULL){
+        return Ajoutdebut(liste);
+     }
+     e = (entier*) malloc(sizeof(entier));
+        printf("saisir l'entier: \n");
+        scanf("%d",&e->x);
+        p= liste->suivant;
 
+       while(p->suivant!=NULL){
+        p = p->suivant;
+      }
+      e->suivant = NULL;
+      p->suivant = e;
+      e-> precedant = p;
+      return liste; 
+}
 void main(){
     entier *liste = (entier*) malloc(sizeof(entier));
     liste->suivant = NULL;
@@ -52,6 +69,8 @@ void main(){
     suppdebut(liste);
     Afficher(liste);
     suppdebut(liste);
+    Afficher(liste);
+    ajoutFin(liste);
     Afficher(liste);
     
 }
