@@ -30,10 +30,11 @@ void Afficher(entier *liste){
 }
 entier *suppdebut(entier *liste){
     entier *e = liste ->suivant;
-    liste->suivant = e->suivant;
+    if(e==NULL) return liste;
+    liste->suivant=e->suivant;
     if (e->suivant!=NULL)
     {
-        liste->suivant->precedant = e;
+        e->suivant->precedant = liste;
     }
      free(e);
     return liste;
