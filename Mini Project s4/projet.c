@@ -19,7 +19,7 @@ typedef struct Avion{
 }Avion;
 Avion *Saisie(){
     int j=0;
-    char ch;
+    
    Avion *temp = (Avion*) malloc(sizeof(Avion));
    printf("Matricule./ ");
    scanf("%s",temp->Mat);
@@ -27,7 +27,7 @@ Avion *Saisie(){
    printf("\n");
    printf("Nombre maximum de place./ ");
    scanf("%d",&temp->MaxPl);
-   printf("\n");
+   printf("\n");    
   do
    {
       printf("Etat (Decolle, Atterit, Maintenance)");
@@ -37,16 +37,16 @@ Avion *Saisie(){
    } while (strcmp(temp->Etat,"decolle")!=0&& strcmp(temp->Etat,"atterit")!=0&& strcmp(temp->Etat,"maintenance")!=0);
    printf("Date mise en service:\n");
    printf("jour./");
-   scanf("%d",temp->dms.j);
+   scanf("%d",&temp->dms.j);
    printf("\t");
    printf("mois./");
-   scanf("%d",temp->dms.j);
+   scanf("%d",&temp->dms.j);
    printf("\t");
    printf("an%ce./",138);
-   scanf("%d",temp->dms.j);
+   scanf("%d",&temp->dms.j);
    printf("\n");
    printf("Nombre de vols./");
-   scanf("%d",temp->nbVol);
+   scanf("%d",&temp->nbVol);
    temp->next = NULL;
    
    return temp;
@@ -62,6 +62,8 @@ void Affichage(Avion *root){
         printf("Nombre maximum de place:   %d",curr->MaxPl);
         printf("\n");
         printf("Etat:                      %s",curr->Etat);
+        printf("Date mise en service:      %d/%d/%d \n",curr->dms.j,curr->dms.m,curr->dms.a);
+        printf("Nombre De vol:             %d \n",curr->nbVol);
         printf("\n \n");
         i++;
         curr= curr->next;
@@ -257,11 +259,10 @@ int NbMaintenance(Avion *root){
     return cpt;
 }
 void Pourcentage(Avion *root,char Etat[]){
-    struct Avion *temp = (Avion *) malloc (sizeof ( Avion));
-    if(strcmp(temp->Etat,"maintenance")==0){
+    if(strcmp(Etat,"maintenance")==0){
         printf("Pourcentage des avions %s : %.2f%c\n",Etat,(NbMaintenance(root)*100)/Size(root),37);
     }
-    else if(strcmp(temp->Etat,"atterit")==0){
+    else if(strcmp(Etat,"atterit")==0){
         printf("Pourcentage des avions %s : %.2f%c\n",Etat,(NbAtterit(root)*100)/Size(root),37);
     }
     else 
@@ -280,13 +281,14 @@ void MaxVol(Avion *root){
         }
         temp = temp->next;
     }
+    temp=root;
     while (temp->next!=NULL)
     {
         if(temp->nbVol == nbMax){
            temp->next = NULL;
            Affichage(temp);
         }
-        
+        temp->next = temp;
     }
     
 }
@@ -329,23 +331,64 @@ void Menu(){
     printf("10./Nombre totale des avions\n");
     printf("11./Nombre des avions atterit\n");
     printf("12./Nombre des avions decolle\n");
-    printf("11./Nombre des avions en maintenance\n");
-    printf("12./Afficher pourcentage des avions\n ");
-    printf("13./ Avion ayant assur%c le nombre maximale des vols\n",138);
-    printf("14./ Avion ayant assur%c le nombre minimale des vols\n ",138);
-    printf("00./ Quitter\n");
+    printf("13./Nombre des avions en maintenance\n");
+    printf("14./Afficher pourcentage des avions\n ");
+    printf("15./ Avion ayant assur%c le nombre maximale des vols\n",138);
+    printf("16./ Avion ayant assur%c le nombre minimale des vols\n ",138);
+    printf("99./ Quitter\n");
     printf("votre choix./");
 }
 
 void main(){
     Avion *root = (Avion*) malloc(sizeof(Avion));
-    int chx;
+    int chx,pos;
+    char Mat[20];
+    char Etat[20];
     root = Saisie();
-    Menu();
-    scanf("%d",&chx);
-    while (chx!=0)
+    while (1)
     {
+        Menu();
+        scanf("%d",&chx);
         switch (chx){
+            case 1: ajoutDebut(&root);break;
+            case 2: AjoutFin(&root);break;
+            case 3:{
+                printf("La position./");
+                scanf("%d",&pos);
+                printf("\n");
+                AjoutPos(&root,pos);break;
+            }
+            case 4: Affichage(root);break;
+            case 5: SuppDebut(&root);break;
+            case 6: SuppFin(&root);break;
+            case 7:{
+                printf("La position./");
+                scanf("%d",&pos);
+                printf("\n");
+                SuppPos(&root,pos);break;
+            }
+            case 8:{
+                printf("La Matricule./");
+                scanf("%s",Mat);
+                printf("\n");
+                SuppPos(&root,*Mat);break;
+            }
+            case 9:SuppAge(&root);
+            case 10: printf("Le nombre des Avions: %d\n",Size(root)); break;
+            case 11: printf("Le nombre des Avions Atterit: %d\n",NbAtterit(root)); break;
+            case 12: printf("Le nombre des Avions Decolle: %d\n",NbDecolle(root)); break;
+            case 13: printf("Le nombre des Avions en Maintenance: %d\n",NbMaintenance(root)); break;
+            case 14:{ 
+                printf("La Matricule./");
+                scanf("%s",Etat);
+                printf("\n");
+                Pourcentage(root,Etat);break;
+              }
+            case 15: MaxVol(root);
+            case 16: MinVol(root);
+            case 99: exit(0);
+            
+            
             default: break;
         }
     }
