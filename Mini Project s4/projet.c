@@ -1,7 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include<ctype.h>
 #include<time.h>
 typedef struct{
     int j;
@@ -379,7 +378,7 @@ void main(){
             case 12: printf("Le nombre des Avions Decolle: %d\n",NbDecolle(root)); break;
             case 13: printf("Le nombre des Avions en Maintenance: %d\n",NbMaintenance(root)); break;
             case 14:{ 
-                printf("La Matricule./");
+                printf("L'Etat./");
                 scanf("%s",Etat);
                 printf("\n");
                 Pourcentage(root,Etat);break;
