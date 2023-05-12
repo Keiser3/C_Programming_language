@@ -41,7 +41,7 @@ Avion *Saisie(){
    printf("mois./");
    scanf("%d",&temp->dms.j);
    printf("\t");
-   printf("an%ce./",138);
+   printf("ann%ce./",138);
    scanf("%d",&temp->dms.j);
    printf("\n");
    printf("Nombre de vols./");
@@ -61,6 +61,7 @@ void Affichage(Avion *root){
         printf("Nombre maximum de place:   %d",curr->MaxPl);
         printf("\n");
         printf("Etat:                      %s",curr->Etat);
+        printf("\n");
         printf("Date mise en service:      %d/%d/%d \n",curr->dms.j,curr->dms.m,curr->dms.a);
         printf("Nombre De vol:             %d \n",curr->nbVol);
         printf("\n \n");
@@ -81,25 +82,22 @@ int Size ( Avion *root)
 }
 void AjoutFin(Avion **root){
     int size = Size(*root);
-    struct Avion *temp = (struct Avion *) malloc (sizeof (Avion));
+    struct Avion *temp = (struct Avion *) malloc (sizeof (struct Avion));
     temp = Saisie();
      struct Avion *curr = *root;
       while (--size)
 	  { 
         curr = curr->next;
       }
-      temp->next = curr->next;
+      temp->next = NULL;
       curr->next = temp;
 }
-
 void ajoutDebut(Avion **root) {
   struct Avion *temp = (struct Avion *) malloc (sizeof (struct Avion));
    temp = Saisie();
    temp->next = *root;
-   *root = temp;
-    
+   *root = temp;    
 }
-
 void AjoutPos(struct Avion **root,int pos)
 {
   int size = Size (*root);
@@ -391,7 +389,5 @@ void main(){
             default: break;
         }
     }
-    
-    
     
  }
