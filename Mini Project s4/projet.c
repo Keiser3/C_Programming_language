@@ -39,10 +39,10 @@ Avion *Saisie(){
    scanf("%d",&temp->dms.j);
    printf("\t");
    printf("mois./");
-   scanf("%d",&temp->dms.j);
+   scanf("%d",&temp->dms.m);
    printf("\t");
    printf("ann%ce./",138);
-   scanf("%d",&temp->dms.j);
+   scanf("%d",&temp->dms.a);
    printf("\n");
    printf("Nombre de vols./");
    scanf("%d",&temp->nbVol);
@@ -332,7 +332,7 @@ void Menu(){
     printf("14./Afficher pourcentage des avions\n ");
     printf("15./ Avion ayant assur%c le nombre maximale des vols\n",138);
     printf("16./ Avion ayant assur%c le nombre minimale des vols\n ",138);
-    printf("99./ Quitter\n");
+    printf("99./ Quitter \n");
     printf("votre choix./");
 }
 
@@ -341,6 +341,7 @@ void main(){
     int chx,pos;
     char Mat[20];
     char Etat[20];
+    printf("Details du premier avion:\n");
     root = Saisie();
     while (1)
     {
