@@ -12,7 +12,7 @@ typedef struct Queue{
 	struct patient *first;
 }Queue;
 
-void unshift(Queue * F){
+void enfiler(Queue * F){
 	patient *e=(patient*)malloc(sizeof(patient)), *p;
 	printf("Details du patient:\n");
     printf("Num%cro de s%ccurit%c sociale./",138,138,138);
@@ -40,7 +40,7 @@ void unshift(Queue * F){
 		e->next=NULL;
 	}		
 }
-void shift(Queue *P){
+void defiler(Queue *P){
 	patient *e=P->first;
 	if(e==NULL) printf("Empty Queue!\n");
 	else{
@@ -119,11 +119,12 @@ void main(){
 	patient *Dep;
 	Queue *MaQueue=(Queue*)malloc(sizeof(Queue));
 	MaQueue->first=NULL;
+
 	for(i=1;i<=n;i++)
-		unshift(MaQueue);
+		enfiler(MaQueue);
     
     AfficherQueue(MaQueue);
-    shift(MaQueue);
+    defiler(MaQueue);
     
     int chx;
     while (1)
@@ -133,9 +134,9 @@ void main(){
          switch (chx)
          {
          case 1:
-            unshift(MaQueue); break;
+            enfiler(MaQueue); break;
          case 2:
-            shift(MaQueue); break;
+            defiler(MaQueue); break;
          case 3:
             AfficherQueue(MaQueue); break;
          case 4:

@@ -1,7 +1,5 @@
 #include<stdio.h>
 #include<stdlib.h>
-
-
 typedef struct patient{
 	int NumSs;
     char nom[30];

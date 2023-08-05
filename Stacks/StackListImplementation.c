@@ -50,6 +50,7 @@ void main(){
 	integer *Dep;
 	Stack *stack=(Stack*)malloc(sizeof(Stack));
 	stack->first=NULL;
+	
 	for(i=1;i<=n;i++)
 		Push(stack);
 	

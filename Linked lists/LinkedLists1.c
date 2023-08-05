@@ -8,18 +8,18 @@ typedef struct compte{
     struct compte *suivant;
 } compte;
 compte* AjoutDebut(compte *liste){
-    compte *c;
+    compte *c=(compte*) malloc(sizeof(compte));;
     //allocation
-    c=(compte*) malloc(sizeof(compte));
+    
     //Lecture des donnees
     printf("donner le num, solde et CIN:\n");
     scanf("%d%f%s",&c->num,&c->solde,c->CIN);
     //chainage
-    
     c->suivant=liste;
     liste=c;
     return liste;
 }
+
 void AfficherListe(compte* liste){
     compte *c;
     int i=0;
@@ -29,6 +29,7 @@ void AfficherListe(compte* liste){
         c=c->suivant;
     }
 }
+
 float MoyenneSoldes(compte *liste){
     int i=0;
     float s=0;
@@ -50,7 +51,7 @@ void AugmenteSolde(compte *liste)
     c->solde += (c->solde)*0.2;
     c = c->suivant;
   }
-  
+
     while(c!=NULL)
     {
       liste->solde = c->solde;
@@ -58,8 +59,6 @@ void AugmenteSolde(compte *liste)
       liste = liste->suivant;
       
     }
- 
-
 }
 
 void main()
@@ -81,7 +80,7 @@ void main()
             c = AjoutDebut(c); 
          }   
          break;
-    case 2:  AugmenteSolde(c);break;  
+    case 2:   AugmenteSolde(c);break;  
     case 3:   AfficherListe(c); break;  
     
     
